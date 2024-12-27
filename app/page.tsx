@@ -1,3 +1,4 @@
+"use client";
 import { FinishGameButton } from "@/components/End";
 import { StartGameButton } from "@/components/Start";
 import {
