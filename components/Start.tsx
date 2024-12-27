@@ -1,14 +1,20 @@
-"use client";
+import { useMutation } from "convex/react";
 
-import { useMutation } from "convex/react"; // Hook til mutationer
+interface StartGameButtonProps {
+  onStart: (id: string, seed: string) => void;
+}
 
-export const StartGameButton = () => {
+export const StartGameButton: React.FC<StartGameButtonProps> = ({
+  onStart,
+}) => {
   const startGame = useMutation("startGame");
 
   const handleStartGame = async () => {
     try {
       const result = await startGame();
-      console.log("Game started:", result);
+      const id = result.gameId;
+      const seed = result.hash;
+      onStart(id, seed);
     } catch (error) {
       console.error("Error starting game:", error);
     }

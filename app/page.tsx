@@ -6,8 +6,16 @@ import {
   SignedIn,
   SignedOut,
 } from "@clerk/nextjs";
+import { useState } from "react";
 
 export default function Home() {
+  const [gameId, setGameId] = useState<string | null>(null);
+  const [clientSeed, setClientSeed] = useState<string | null>(null);
+
+  const handleStartGame = (id: string, seed: string) => {
+    setGameId(id);
+    setClientSeed(seed);
+  };
   return (
     <div className="bg-red-300 h-96">
       <SignedOut>
@@ -17,8 +25,10 @@ export default function Home() {
         <SignOutButton />
       </SignedIn>
       <h1>Coinflip</h1>
-      <StartGameButton />
-      <FinishGameButton />
+      <StartGameButton onStart={handleStartGame} />
+      {gameId && clientSeed && (
+        <FinishGameButton clientSeed={clientSeed} gameId={gameId} />
+      )}
     </div>
   );
 }
