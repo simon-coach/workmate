@@ -1,6 +1,7 @@
 "use client";
 
-import { useMutation } from "convex/react"; // Hook til mutationer
+import { useMutation } from "convex/react";
+import { api } from "../convex/_generated/api";
 
 export const FinishGameButton = ({
   clientSeed,
@@ -9,7 +10,7 @@ export const FinishGameButton = ({
   clientSeed: string;
   gameId: string;
 }) => {
-  const finishGame = useMutation("finishGame");
+  const finishGame = useMutation(api.functions.finishGame.finishGame);
 
   const handleFinishGame = async () => {
     try {

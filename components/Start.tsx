@@ -1,4 +1,5 @@
 import { useMutation } from "convex/react";
+import { api } from "../convex/_generated/api"; // Sørg for korrekt sti
 
 interface StartGameButtonProps {
   onStart: (id: string, seed: string) => void;
@@ -7,7 +8,7 @@ interface StartGameButtonProps {
 export const StartGameButton: React.FC<StartGameButtonProps> = ({
   onStart,
 }) => {
-  const startGame = useMutation("startGame");
+  const startGame = useMutation(api.functions.startGame.startGame);
 
   const handleStartGame = async () => {
     try {
