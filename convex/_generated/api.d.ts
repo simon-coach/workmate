@@ -13,8 +13,9 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as functions_finishGame from "../functions/finishGame.js";
+import type * as functions_flipRounds from "../functions/flipRounds.js";
 import type * as functions_startGame from "../functions/startGame.js";
+import type * as users from "../users.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -25,8 +26,9 @@ import type * as functions_startGame from "../functions/startGame.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  "functions/finishGame": typeof functions_finishGame;
+  "functions/flipRounds": typeof functions_flipRounds;
   "functions/startGame": typeof functions_startGame;
+  users: typeof users;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
